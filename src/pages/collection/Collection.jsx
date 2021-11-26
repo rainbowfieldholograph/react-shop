@@ -8,7 +8,6 @@ const Collection = ({ data }) => {
       <div className={styles.title}>
         <h1>{data.title}</h1>
       </div>
-      {console.log('COLLECTION: ', data)}
       <Products data={data.products} />
     </main>
   )
