@@ -5,6 +5,7 @@ import Layout from '../layout/Layout'
 import Home from '../../pages/home/Home'
 import { BrowserRouter } from 'react-router-dom'
 import PageNotFound from '../pageNotFound/PageNotFound'
+import ProductInfo from '../productInfo/ProductInfo'
 
 const Router = ({ data }) => {
   return (
@@ -13,6 +14,22 @@ const Router = ({ data }) => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home data={data} />} />
           {data.map((item, index) => {
+            item.products.map((product, index) => {
+              console.log(`collections/${item.title}/${product.title}`)
+              return (
+                <Route
+                  key={index + 999}
+                  path={`collections/${item.title}/${product.title}`}
+                  element={
+                    <ProductInfo
+                      title={product.title}
+                      price={product.price}
+                      image={product.image}
+                    />
+                  }
+                />
+              )
+            })
             return (
               <Route
                 key={index}

@@ -28,10 +28,7 @@
   gap: 1rem;
 }
 
-.link:hover {
-  opacity: 0.5;
-}
-
+.link:hover,
 .link:focus {
   opacity: 0.5;
 }

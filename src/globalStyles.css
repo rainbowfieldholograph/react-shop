@@ -117,7 +117,7 @@ a {
   transform: scaleX(1);
 }
 
-/* @supports selector(:focus-visible) {
+@supports (focus-visible: focus-visible) {
   .customLink:focus::before {
     transform: scaleX(0);
   }
@@ -125,6 +125,6 @@ a {
   .customLink:focus-visible::before {
     transform: scaleX(1);
   }
-} */
+}
 
 /* === */

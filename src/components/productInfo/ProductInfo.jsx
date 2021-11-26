@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ProductInfo = ({ title, price, image }) => {
+  console.log('ahwjvhjabwk')
   return (
     <div>
       <h1>{title}</h1>

@@ -16,10 +16,7 @@
   position: relative;
 }
 
-.bigCard:hover {
-  opacity: 0.5;
-}
-
+.bigCard:hover,
 .bigCard:focus {
   opacity: 0.5;
 }
