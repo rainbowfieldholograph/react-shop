@@ -9,12 +9,20 @@ const Header = () => (
     <div className={styles.container}>
       <nav className={styles.inner}>
         <div>
-          <Link to="/">Logo</Link>
+          <Link className="customLink" to="/">
+            Logo
+          </Link>
         </div>
         <div className={styles.links}>
-          <a href="#">Mainsite</a>
-          <a href="#">Label</a>
-          <a href="#">Forums</a>
+          <a className="customLink" href="#">
+            Mainsite
+          </a>
+          <a className="customLink" href="#">
+            Label
+          </a>
+          <a className="customLink" href="#">
+            Forums
+          </a>
         </div>
         <div className={styles.btns}>
           <button className={styles.btn}>

@@ -20,6 +20,10 @@
   opacity: 0.5;
 }
 
+.bigCard:focus {
+  opacity: 0.5;
+}
+
 .bigCard::after {
   content: var(--text);
   position: absolute;
