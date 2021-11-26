@@ -1,0 +1,27 @@
+.filter {
+  border-bottom: 1px solid #000;
+  padding-block: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filters {
+  text-transform: uppercase;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.filter label {
+  margin-right: 2em;
+}
+
+.filter select {
+  background-image: none;
+  background-color: transparent;
+  border: 0;
+  font-size: 1em;
+}

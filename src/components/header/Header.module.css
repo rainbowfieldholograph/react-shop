@@ -1,0 +1,34 @@
+.header {
+  border-bottom: 1px solid #000;
+  margin-bottom: 3rem;
+}
+
+.container {
+  padding-inline: var(--container-inline-padding);
+}
+
+.inner {
+  padding-block: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  gap: 1.5em;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}

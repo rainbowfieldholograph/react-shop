@@ -1,0 +1,29 @@
+.footer {
+  margin-top: auto;
+}
+
+.link {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.rightText {
+  text-align: right;
+}
+
+.contentWrapper {
+  border-top: 1px solid #e6e6e6;
+  padding-block: 2rem;
+}
+
+.contentInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.social {
+  display: flex;
+  gap: 1rem;
+}
