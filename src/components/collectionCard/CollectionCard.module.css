@@ -1,0 +1,24 @@
+.bigCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(247, 247, 247);
+  max-width: 100%;
+  position: relative;
+}
+
+.bigCard:hover,
+.bigCard:focus {
+  opacity: 0.5;
+}
+
+.bigCard::after {
+  content: var(--text);
+  position: absolute;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.image {
+  opacity: 0.65;
+}

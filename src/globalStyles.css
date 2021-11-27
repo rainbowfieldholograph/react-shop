@@ -77,8 +77,11 @@ aside {
   padding-inline: var(--container-inline-padding);
 }
 
-ul li {
+ul,
+li {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 img {
@@ -117,7 +120,7 @@ a {
   transform: scaleX(1);
 }
 
-@supports (focus-visible: focus-visible) {
+/* @supports selecto(: focus-visible) {
   .customLink:focus::before {
     transform: scaleX(0);
   }
@@ -125,6 +128,6 @@ a {
   .customLink:focus-visible::before {
     transform: scaleX(1);
   }
-}
+} */
 
 /* === */

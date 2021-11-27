@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.headLink}>
-        <Link className="customLink" to="/">
+        <Link className="customLink" to="return-policy">
           Return policy
         </Link>
       </div>

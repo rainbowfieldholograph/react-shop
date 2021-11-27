@@ -17,9 +17,9 @@ const Header = () => (
           <a className="customLink" href="#">
             Mainsite
           </a>
-          <a className="customLink" href="#">
-            Label
-          </a>
+          <Link className="customLink" to="collections">
+            Collections
+          </Link>
           <a className="customLink" href="#">
             Forums
           </a>
