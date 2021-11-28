@@ -28,9 +28,9 @@ const Header = () => (
           <button className={styles.btn}>
             <img width="18px" height="auto" src={searchIcon} alt="search" />
           </button>
-          <button className={styles.btn}>
+          <Link to="cart" className={styles.btn}>
             <img width="18px" height="auto" src={cartIcon} alt="search" />
-          </button>
+          </Link>
         </div>
       </nav>
     </div>

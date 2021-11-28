@@ -1,0 +1,60 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.imgWrapper {
+  flex: 50%;
+}
+
+.info {
+  flex: 50%;
+}
+
+.title {
+  margin-bottom: 0.2em;
+}
+
+.price {
+  margin-bottom: 1.7em;
+}
+
+.sizeWrapper {
+  margin-bottom: 1rem;
+}
+
+.sizeTitle {
+  margin-bottom: 0.5em;
+}
+
+.sizeSelect {
+  background-color: transparent;
+  border: 1px solid #000;
+  padding-block: 0.8em;
+  padding-right: 13em;
+  padding-left: 1em;
+}
+
+.addBtn {
+  min-height: 3em;
+  max-width: 30em;
+  width: 100%;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #000;
+  margin-bottom: 6rem;
+}
+
+.descr {
+  margin-bottom: 2em;
+}
+
+.benefits li {
+  list-style: disc;
+  margin-left: 1em;
+}
+
+.benefits li:not(:last-child) {
+  margin-bottom: 0.2em;
+}

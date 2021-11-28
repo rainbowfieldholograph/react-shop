@@ -8,6 +8,7 @@ import PageNotFound from '../../pages/pageNotFound/PageNotFound'
 import ProductInfo from '../../pages/productInfo/ProductInfo'
 import Collections from '../../pages/collections/Collections'
 import ReturnPolicy from '../../pages/returnPolicy/ReturnPolicy'
+import Cart from '../../pages/cart/Cart'
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
           <Route path="collections/:collection/:product" element={<ProductInfo />} />
           <Route path="return-policy" element={<ReturnPolicy />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="cart" element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>
