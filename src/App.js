@@ -18,7 +18,7 @@ const data = {
   ],
   //===
   findCollectionById: function (id) {
-    return this.find((col) => col.id === id)
+    return collections.find((col) => col.id === id)
   },
   products: [
     {
