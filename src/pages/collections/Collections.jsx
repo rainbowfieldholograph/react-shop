@@ -1,23 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Collections.module.css'
-import CollectionsData from '../../store/collectionsStore'
-import { observer } from 'mobx-react-lite'
 import CollectionCard from '../../components/collectionCard/CollectionCard'
+import AppContext from '../../context/appContext'
 
-const Collections = observer(() => {
-  const { data } = CollectionsData
+const Collections = () => {
+  const { collections } = useContext(AppContext)
   return (
     <div className={styles.collections}>
       <div className="container">
         <h1 className={styles.title}>Collections</h1>
         <ul className={styles.items}>
-          {data.map((col, index) => (
+          {collections.map((col) => (
             <li className={styles.card}>
               <CollectionCard
-                key={index}
+                key={col.id}
                 title={col.title}
-                linkTo={`${col.title}`}
-                image={col.products[0].image}
+                linkTo={`${col.id}`}
+                image={col.image}
               />
             </li>
           ))}
@@ -25,6 +24,6 @@ const Collections = observer(() => {
       </div>
     </div>
   )
-})
+}
 
 export default Collections

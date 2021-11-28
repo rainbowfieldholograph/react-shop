@@ -1,14 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
-import Collection from '../../pages/collection/Collection'
-import Layout from '../layout/Layout'
-import Home from '../../pages/home/Home'
+import Collection from '../pages/collection/Collection'
+import Layout from '../components/layout/Layout'
+import Home from '../pages/home/Home'
 import { BrowserRouter } from 'react-router-dom'
-import PageNotFound from '../../pages/pageNotFound/PageNotFound'
-import ProductInfo from '../../pages/productInfo/ProductInfo'
-import Collections from '../../pages/collections/Collections'
-import ReturnPolicy from '../../pages/returnPolicy/ReturnPolicy'
-import Cart from '../../pages/cart/Cart'
+import PageNotFound from '../pages/pageNotFound/PageNotFound'
+import ProductInfo from '../pages/productInfo/ProductInfo'
+import Collections from '../pages/collections/Collections'
+import ReturnPolicy from '../pages/returnPolicy/ReturnPolicy'
+import Cart from '../pages/cart/Cart'
 
 const Router = () => {
   return (

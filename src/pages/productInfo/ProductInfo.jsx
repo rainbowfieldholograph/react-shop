@@ -1,20 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router'
+import AppContext from '../../context/appContext'
 import PageNotFound from '../pageNotFound/PageNotFound'
-import CollectionsData from '../../store/collectionsStore'
-import { observer } from 'mobx-react-lite'
 import styles from './ProductInfo.module.css'
 
-const findProduct = (data, product, collection) => {
-  return data
-    .find((col) => col.title === collection)
-    .products.find((prod) => prod.title === product)
+const addItemToStorage = (id) => {
+  sessionStorage.setItem('cart', id)
 }
 
-const ProductInfo = observer(() => {
-  const { data } = CollectionsData
+const ProductInfo = () => {
+  const collections = useContext(AppContext)
   const { product, collection } = useParams()
-  const findedData = findProduct(data, product, collection)
+  console.log(collections)
+  const findedData = collections
+    .findCollectionById(collection)
+    .getProducts()
+    .find((prod) => prod.id === product) //find collection and product by url
   return findedData ? (
     <div className="container">
       <div className={styles.wrapper}>
@@ -36,8 +37,7 @@ const ProductInfo = observer(() => {
               </select>
             </div>
           )}
-
-          <button className={styles.addBtn}>
+          <button onClick={addItemToStorage(findedData.id)} className={styles.addBtn}>
             <p>Add to cart</p>
           </button>
           <div className={styles.descr}>
@@ -45,8 +45,8 @@ const ProductInfo = observer(() => {
           </div>
           {findedData.benefits && (
             <ul className={styles.benefits}>
-              {findedData.benefits.map((benefit) => (
-                <li>{benefit}</li>
+              {findedData.benefits.map((benefit, index) => (
+                <li key={index}>{benefit}</li>
               ))}
             </ul>
           )}
@@ -56,6 +56,6 @@ const ProductInfo = observer(() => {
   ) : (
     <PageNotFound />
   )
-})
+}
 
 export default ProductInfo

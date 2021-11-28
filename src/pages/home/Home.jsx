@@ -1,24 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Home.module.css'
-import CollectionsData from '../../store/collectionsStore'
-import { observer } from 'mobx-react-lite'
 import CollectionCard from '../../components/collectionCard/CollectionCard'
+import AppContext from '../../context/appContext'
 
-const Home = observer(() => {
-  const { data } = CollectionsData
+const Home = () => {
+  const { collections } = useContext(AppContext)
   return (
     <main className={styles.home}>
       <div className="container">
         <ul className={styles.bigItems}>
-          {data.map((item, index) => {
+          {collections.map((col, index) => {
             return (
               index < 2 && (
                 <li>
                   <CollectionCard
-                    key={index}
-                    title={item.title}
-                    linkTo={`collections/${item.title}`}
-                    image={item.products[0].image}
+                    key={col.id}
+                    title={col.title}
+                    linkTo={`collections/${col.id}`}
+                    image={col.image}
                   />
                 </li>
               )
@@ -28,6 +27,6 @@ const Home = observer(() => {
       </div>
     </main>
   )
-})
+}
 
 export default Home

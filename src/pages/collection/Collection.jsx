@@ -1,27 +1,33 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Collection.module.css'
 import { useParams } from 'react-router'
 import PageNotFound from '../pageNotFound/PageNotFound'
-import CollectionsData from '../../store/collectionsStore'
-import { observer } from 'mobx-react-lite'
 import Product from '../../components/product/Product'
 import Filter from '../../components/filter/Filter'
+import AppContext from '../../context/appContext'
 
-const Collection = observer(() => {
-  const { data } = CollectionsData
-  const { collection } = useParams()
-  const findedData = data.find((prod) => prod.title === collection)
-  return findedData ? (
+const Collection = () => {
+  const data = useContext(AppContext)
+  const { collection } = useParams() //get collection url
+  const findedCol = data.findCollectionById(collection)
+  const findedProds = findedCol?.getProducts()
+  return findedCol ? (
     <main className={styles.collection}>
       <div className={styles.title}>
-        <h1>{findedData.title}</h1>
+        <h1>{findedCol.title}</h1>
       </div>
       <div className={styles.products}>
-        <Filter count={findedData.products.length} />
+        <Filter count={findedProds.length} />
         <div className="container">
           <div className={styles.productsItems}>
-            {findedData.products.map((item, index) => (
-              <Product key={index} title={item.title} price={item.price} image={item.image} />
+            {findedProds.map((item) => (
+              <Product
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                image={item.image}
+              />
             ))}
           </div>
         </div>
@@ -30,6 +36,6 @@ const Collection = observer(() => {
   ) : (
     <PageNotFound />
   )
-})
+}
 
 export default Collection
