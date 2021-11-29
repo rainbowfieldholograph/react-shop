@@ -12,7 +12,7 @@ const addItemToStorage = (id) => {
   console.log(prevData)
 }
 
-const ProductInfo = () => {
+const ProductInfo = ({ addNewCartItem }) => {
   const { findCollectionById } = useContext(AppContext)
   const { product, collection } = useParams()
   const findedData = findCollectionById(collection)?.getProductById(product)
@@ -37,7 +37,7 @@ const ProductInfo = () => {
               </select>
             </div>
           )}
-          <button onClick={() => addItemToStorage(findedData.id)} className={styles.addBtn}>
+          <button onClick={() => addNewCartItem(findedData.id)} className={styles.addBtn}>
             <p>Add to cart</p>
           </button>
           <div className={styles.descr}>

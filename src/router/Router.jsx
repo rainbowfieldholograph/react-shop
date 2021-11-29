@@ -10,15 +10,18 @@ import Collections from '../pages/collections/Collections'
 import ReturnPolicy from '../pages/returnPolicy/ReturnPolicy'
 import Cart from '../pages/cart/Cart'
 
-const Router = () => {
+const Router = ({ cartCount, addNewCartItem }) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout cartCount={cartCount} />}>
           <Route index element={<Home />} />
           <Route path="collections" element={<Collections />} />
           <Route path="collections/:collection" element={<Collection />} />
-          <Route path="collections/:collection/:product" element={<ProductInfo />} />
+          <Route
+            path="collections/:collection/:product"
+            element={<ProductInfo addNewCartItem={addNewCartItem} />}
+          />
           <Route path="return-policy" element={<ReturnPolicy />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="cart" element={<Cart />} />

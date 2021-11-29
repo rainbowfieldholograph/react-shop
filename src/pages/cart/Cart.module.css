@@ -21,3 +21,8 @@
 .btn:hover {
   opacity: 0.5;
 }
+
+.items {
+  width: 100%;
+  border-block: 1px solid #000;
+}

@@ -1,5 +1,5 @@
 import './globalStyles.css'
-import React from 'react'
+import React, { useState } from 'react'
 import Router from './router/Router'
 import AppContext from './context/appContext'
 
@@ -41,12 +41,35 @@ const data = {
   findProductById: function (id) {
     return data.products.find((prod) => prod.id === id)
   },
+
+  findProductsByIds: function (ids) {
+    let result = []
+    for (let index = 0; index < ids.length; index++) {
+      const element = data.products.find((prod) => ids[index] === prod.id)
+      if (element) {
+        result = [element, ...result]
+      }
+    }
+    return result
+  },
 }
 
 function App() {
+  const [cartCount, setCartCount] = useState(JSON.parse(sessionStorage.getItem('cart'))?.length)
+
+  const addNewCartItem = (id) => {
+    const prevData = JSON.parse(sessionStorage.getItem('cart'))
+    cartCount
+      ? sessionStorage.setItem('cart', JSON.stringify([prevData && id, ...prevData]))
+      : sessionStorage.setItem('cart', JSON.stringify([id]))
+    const newData = JSON.parse(sessionStorage.getItem('cart'))
+    setCartCount(newData?.length)
+    console.log(newData)
+  }
+
   return (
     <AppContext.Provider value={data}>
-      <Router />
+      <Router cartCount={cartCount} addNewCartItem={addNewCartItem} />
     </AppContext.Provider>
   )
 }

@@ -4,10 +4,10 @@ import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import styles from './Layout.module.css'
 
-const Layout = () => {
+const Layout = ({ cartCount }) => {
   return (
     <div className={styles.page}>
-      <Header />
+      <Header cartCount={cartCount} />
       <Outlet />
       <Footer />
     </div>
