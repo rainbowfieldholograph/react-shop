@@ -4,15 +4,13 @@ import AppContext from '../../context/appContext'
 import styles from './Cart.module.css'
 
 const Cart = () => {
-  const { data } = useContext(AppContext)
+  const { findProductById } = useContext(AppContext)
   const navigate = useNavigate()
-  const storageData = sessionStorage.getItem('cart')
+  const storageData = JSON.parse(sessionStorage.getItem('cart'))
   let findedData = null
   console.log(storageData)
   if (storageData) {
-    findedData = data
-      .find((col) => (col.id = '999'))
-      .products.find((prod) => prod.id === storageData)
+    findedData = findProductById(storageData)
   }
   console.log(findedData)
   return (

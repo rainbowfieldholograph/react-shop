@@ -14,11 +14,13 @@ const data = {
       getProducts: function () {
         return data.products.filter((prod) => this.productIds.includes(prod.id))
       },
+      getProductById: function (id) {
+        return this.getProducts().find((prod) => prod.id === id)
+      },
     },
   ],
-  //===
   findCollectionById: function (id) {
-    return collections.find((col) => col.id === id)
+    return data.collections.find((col) => col.id === id)
   },
   products: [
     {
@@ -36,6 +38,9 @@ const data = {
       ],
     },
   ],
+  findProductById: function (id) {
+    return data.products.find((prod) => prod.id === id)
+  },
 }
 
 function App() {

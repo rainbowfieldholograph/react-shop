@@ -12,9 +12,8 @@ const Home = () => {
           {collections.map((col, index) => {
             return (
               index < 2 && (
-                <li>
+                <li key={col.id}>
                   <CollectionCard
-                    key={col.id}
                     title={col.title}
                     linkTo={`collections/${col.id}`}
                     image={col.image}

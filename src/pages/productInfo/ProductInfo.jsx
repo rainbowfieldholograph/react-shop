@@ -5,17 +5,17 @@ import PageNotFound from '../pageNotFound/PageNotFound'
 import styles from './ProductInfo.module.css'
 
 const addItemToStorage = (id) => {
-  sessionStorage.setItem('cart', id)
+  const prevData = JSON.parse(sessionStorage.getItem('cart'))
+  prevData
+    ? sessionStorage.setItem('cart', JSON.stringify([prevData && id, ...prevData]))
+    : sessionStorage.setItem('cart', JSON.stringify([id]))
+  console.log(prevData)
 }
 
 const ProductInfo = () => {
-  const collections = useContext(AppContext)
+  const { findCollectionById } = useContext(AppContext)
   const { product, collection } = useParams()
-  console.log(collections)
-  const findedData = collections
-    .findCollectionById(collection)
-    .getProducts()
-    .find((prod) => prod.id === product) //find collection and product by url
+  const findedData = findCollectionById(collection)?.getProductById(product)
   return findedData ? (
     <div className="container">
       <div className={styles.wrapper}>
@@ -37,7 +37,7 @@ const ProductInfo = () => {
               </select>
             </div>
           )}
-          <button onClick={addItemToStorage(findedData.id)} className={styles.addBtn}>
+          <button onClick={() => addItemToStorage(findedData.id)} className={styles.addBtn}>
             <p>Add to cart</p>
           </button>
           <div className={styles.descr}>
