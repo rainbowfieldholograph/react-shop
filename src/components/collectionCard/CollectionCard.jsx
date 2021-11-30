@@ -4,7 +4,7 @@ import styles from './CollectionCard.module.css'
 
 const CollectionCard = ({ linkTo, title, image }) => (
   <Link style={{ '--text': `'${title}'` }} className={styles.bigCard} to={linkTo}>
-    <img className={styles.image} width="100%" src={image} alt="product" />
+    <img className={styles.image} width="500px" height="auto" src={image} alt="product" />
   </Link>
 )
 

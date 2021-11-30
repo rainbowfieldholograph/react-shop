@@ -11,13 +11,8 @@ const Collections = () => {
         <h1 className={styles.title}>Collections</h1>
         <ul className={styles.items}>
           {collections.map((col) => (
-            <li className={styles.card}>
-              <CollectionCard
-                key={col.id}
-                title={col.title}
-                linkTo={`${col.id}`}
-                image={col.image}
-              />
+            <li key={col.id} className={styles.card}>
+              <CollectionCard title={col.title} linkTo={`${col.id}`} image={col.image} />
             </li>
           ))}
         </ul>

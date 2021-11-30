@@ -1,4 +1,3 @@
-import React from 'react'
 import { Route, Routes } from 'react-router'
 import Collection from '../pages/collection/Collection'
 import Layout from '../components/layout/Layout'
@@ -10,11 +9,11 @@ import Collections from '../pages/collections/Collections'
 import ReturnPolicy from '../pages/returnPolicy/ReturnPolicy'
 import Cart from '../pages/cart/Cart'
 
-const Router = ({ cartCount, addNewCartItem }) => {
+const Router = ({ addNewCartItem, findCartItems }) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout cartCount={cartCount} />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="collections" element={<Collections />} />
           <Route path="collections/:collection" element={<Collection />} />
@@ -24,7 +23,7 @@ const Router = ({ cartCount, addNewCartItem }) => {
           />
           <Route path="return-policy" element={<ReturnPolicy />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="cart" element={<Cart />} />
+          <Route path="cart" element={<Cart findCartItems={findCartItems} />} />
         </Route>
       </Routes>
     </BrowserRouter>

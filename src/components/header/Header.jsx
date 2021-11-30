@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
 import searchIcon from '../../images/svg/search.svg'
 import cartIcon from '../../images/svg/cart.svg'
+import { useContext } from 'react'
+import CartContext from '../../context/cartContext'
 
-const Header = ({ cartCount }) => {
+const Header = () => {
+  const { getCartItemsCount } = useContext(CartContext)
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -31,7 +34,7 @@ const Header = ({ cartCount }) => {
             </button>
             <Link to="cart" className={styles.btn}>
               <img width="18px" height="auto" src={cartIcon} alt="search" />
-              <p>{cartCount}</p>
+              <p>{getCartItemsCount()}</p>
             </Link>
           </div>
         </nav>
