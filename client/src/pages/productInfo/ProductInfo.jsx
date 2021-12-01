@@ -1,13 +1,15 @@
 import React, { useContext, useRef } from 'react'
 import { useParams } from 'react-router'
 import AppContext from '../../context/appContext'
+import CartContext from '../../context/cartContext'
 import PageNotFound from '../pageNotFound/PageNotFound'
 import styles from './ProductInfo.module.css'
 
-const ProductInfo = ({ addNewCartItem }) => {
-  const { findCollectionById } = useContext(AppContext)
+const ProductInfo = () => {
+  const appData = useContext(AppContext)
+  const { addNewCartItem } = useContext(CartContext)
   const { product, collection } = useParams()
-  const findedProduct = findCollectionById(collection)?.getProductById(product)
+  const findedProduct = appData.findCollectionById(collection)?.getProductById(product)
   const sizeRef = useRef()
   return findedProduct ? (
     <div className="container">

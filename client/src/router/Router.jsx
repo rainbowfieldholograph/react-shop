@@ -9,7 +9,7 @@ import Collections from '../pages/collections/Collections'
 import ReturnPolicy from '../pages/returnPolicy/ReturnPolicy'
 import Cart from '../pages/cart/Cart'
 
-const Router = ({ addNewCartItem, findCartItems }) => {
+const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -17,13 +17,10 @@ const Router = ({ addNewCartItem, findCartItems }) => {
           <Route index element={<Home />} />
           <Route path="collections" element={<Collections />} />
           <Route path="collections/:collection" element={<Collection />} />
-          <Route
-            path="collections/:collection/:product"
-            element={<ProductInfo addNewCartItem={addNewCartItem} />}
-          />
+          <Route path="collections/:collection/:product" element={<ProductInfo />} />
           <Route path="return-policy" element={<ReturnPolicy />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="cart" element={<Cart findCartItems={findCartItems} />} />
+          <Route path="cart" element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -7,9 +7,9 @@ import Filter from '../../components/filter/Filter'
 import AppContext from '../../context/appContext'
 
 const Collection = () => {
-  const { findCollectionById } = useContext(AppContext)
+  const appData = useContext(AppContext)
   const { collection } = useParams() //get collection url
-  const findedCol = findCollectionById(collection)
+  const findedCol = appData.findCollectionById(collection)
   const findedProds = findedCol?.getProducts()
   return findedCol ? (
     <main className={styles.collection}>

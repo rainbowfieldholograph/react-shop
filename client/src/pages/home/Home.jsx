@@ -4,12 +4,12 @@ import CollectionCard from '../../components/collectionCard/CollectionCard'
 import AppContext from '../../context/appContext'
 
 const Home = () => {
-  const { collections } = useContext(AppContext)
+  const appData = useContext(AppContext)
   return (
     <main className={styles.home}>
       <div className="container">
         <ul className={styles.bigItems}>
-          {collections.map((col, index) => {
+          {appData.collections.map((col, index) => {
             return (
               index < 2 && (
                 <li key={col.id}>

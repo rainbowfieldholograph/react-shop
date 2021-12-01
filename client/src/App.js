@@ -4,7 +4,7 @@ import Router from './router/Router'
 import AppContext from './context/appContext'
 import CartContext from './context/cartContext'
 
-const data = {
+const appData = {
   collections: [
     {
       id: '999',
@@ -12,17 +12,15 @@ const data = {
       image:
         'https://cdn.shopify.com/s/files/1/0550/3225/0526/products/unisex-organic-cotton-t-shirt-black-front-6195768cf117b_1024x1024@2x.png?v=1637186606',
       productIds: ['real-capybara', 'real-123', 'real12315135-capybara'],
-      getProducts: function () {
-        return data.products.filter((prod) => this.productIds.includes(prod.id))
+      getProducts() {
+        return appData.products.filter((prod) => this.productIds.includes(prod.id))
       },
-      getProductById: function (id) {
+      getProductById(id) {
         return this.getProducts().find((prod) => prod.id === id)
       },
     },
   ],
-  findCollectionById: function (id) {
-    return data.collections.find((col) => col.id === id)
-  },
+
   products: [
     {
       id: 'real-capybara',
@@ -67,20 +65,23 @@ const data = {
       ],
     },
   ],
-  findProductById: function (id) {
-    return data.products.find((prod) => prod.id === id)
+  findCollectionById(id) {
+    return this.collections.find((col) => col.id === id)
+  },
+  findProductById(id) {
+    return this.products.find((prod) => prod.id === id)
   },
 
-  findProductsByIds: function (ids) {
-    let result = []
-    for (let index = 0; index < ids.length; index++) {
-      const element = data.products.find((prod) => ids[index] === prod.id)
-      if (element) {
-        result = [element, ...result]
-      }
-    }
-    return result
-  },
+  // findProductsByIds(ids) {
+  //   let result = []
+  //   for (let index = 0; index < ids.length; index++) {
+  //     const element = data.products.find((prod) => ids[index] === prod.id)
+  //     if (element) {
+  //       result = [element, ...result]
+  //     }
+  //   }
+  //   return result
+  // },
 }
 
 function App() {
@@ -107,7 +108,7 @@ function App() {
   const findCartItems = () => {
     let newData = []
     cartItems?.forEach((prod) => {
-      const newProduct = { ...data.findProductById(prod.parentId) }
+      const newProduct = { ...appData.findProductById(prod.parentId) }
       newProduct.id = prod.id
       newProduct.parentId = prod.parentId
       newProduct.sizeId = prod.sizeId
@@ -128,11 +129,11 @@ function App() {
   const getCartItemsCount = () => cartItems.length
 
   return (
-    <AppContext.Provider value={data}>
+    <AppContext.Provider value={appData}>
       <CartContext.Provider
         value={{ addNewCartItem, findCartItems, removeCartItem, getCartItemsCount }}
       >
-        <Router addNewCartItem={addNewCartItem} findCartItems={findCartItems} />
+        <Router />
       </CartContext.Provider>
     </AppContext.Provider>
   )
