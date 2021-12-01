@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import styles from './Collection.module.css'
 import { useParams } from 'react-router'
 import PageNotFound from '../pageNotFound/PageNotFound'

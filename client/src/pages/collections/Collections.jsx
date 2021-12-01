@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import styles from './Collections.module.css'
 import CollectionCard from '../../components/collectionCard/CollectionCard'
 import AppContext from '../../context/appContext'
