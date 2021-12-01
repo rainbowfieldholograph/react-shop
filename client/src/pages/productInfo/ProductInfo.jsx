@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import { useContext, useRef } from 'react'
 import { useParams } from 'react-router'
 import AppContext from '../../context/appContext'
 import CartContext from '../../context/cartContext'
