@@ -1,12 +1,26 @@
-import express from 'express'
-
+require('dotenv').config()
+const express = require('express')
+const sequelize = require('./db.js')
+const models = require('./models/models')
+const cors = require('cors')
 const PORT = process.env.PORT || 4000
+const router = require('./routes/index')
+const errorHandler = require('./middleware/ErrorHandlingMiddleware')
+
 const app = express()
+app.use(cors())
+app.use(express.json())
+app.use('/api', router)
+app.use(errorHandler)
 
-app.get('/', (req, res) => {
-  res.send('<h1>hello!x)</h1>')
-})
+const start = async () => {
+  try {
+    await sequelize.authenticate()
+    await sequelize.sync()
+    app.listen(PORT, () => console.log(`Server has been started on port ${PORT}`))
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-app.listen(PORT, () => {
-  console.log(`Server has been started on port ${PORT}`)
-})
+start()
