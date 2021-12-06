@@ -1,24 +1,28 @@
-import { useContext } from 'react'
+import { useEffect } from 'react'
 import styles from './Collections.module.css'
 import CollectionCard from '../../components/collectionCard/CollectionCard'
-import AppContext from '../../context/appContext'
+import DataStore from '../../mobx/DataStore'
+import { observer } from 'mobx-react-lite'
 
-const Collections = () => {
-  const appData = useContext(AppContext)
+const Collections = observer(() => {
+  useEffect(() => {
+    DataStore.fetchCollections()
+  }, [])
+
   return (
     <div className={styles.collections}>
       <div className="container">
         <h1 className={styles.title}>Collections</h1>
         <ul className={styles.items}>
-          {appData.collections.map((col) => (
+          {DataStore.collections.map((col) => (
             <li key={col.id} className={styles.card}>
-              <CollectionCard title={col.title} linkTo={`${col.id}`} image={col.image} />
+              <CollectionCard title={col.name} linkTo={`${col.id}`} image={col.image} />
             </li>
           ))}
         </ul>
       </div>
     </div>
   )
-}
+})
 
 export default Collections

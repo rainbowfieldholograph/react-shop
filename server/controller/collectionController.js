@@ -11,7 +11,11 @@ class CollectionController {
     const collections = await Collection.findAll()
     return res.json(collections)
   }
-  async getOne(req, res) {}
+  async getOne(req, res) {
+    const { id } = req.params
+    const collection = await Collection.findOne({ where: { id } })
+    return res.json(collection)
+  }
 }
 
 module.exports = new CollectionController()

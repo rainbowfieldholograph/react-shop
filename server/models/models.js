@@ -6,6 +6,7 @@ const Product = sequelize.define('product', {
   name: { type: DataTypes.STRING, unique: true, allowNull: false },
   price: { type: DataTypes.FLOAT, allowNull: false },
   image: { type: DataTypes.STRING, allowNull: false },
+  sizes: { type: DataTypes.ARRAY(DataTypes.STRING) },
   descr: { type: DataTypes.STRING },
   benefits: { type: DataTypes.ARRAY(DataTypes.STRING) },
 })

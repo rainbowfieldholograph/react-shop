@@ -1,20 +1,25 @@
-import { useContext } from 'react'
+import { useEffect } from 'react'
 import styles from './Collection.module.css'
 import { useParams } from 'react-router'
 import PageNotFound from '../pageNotFound/PageNotFound'
 import Product from '../../components/product/Product'
 import Filter from '../../components/filter/Filter'
-import AppContext from '../../context/appContext'
+import DataStore from '../../mobx/DataStore'
+import { observer } from 'mobx-react-lite'
 
-const Collection = () => {
-  const appData = useContext(AppContext)
+const Collection = observer(() => {
+  useEffect(() => {
+    DataStore.fetchProducts()
+  }, [])
+
   const { collection } = useParams() //get collection url
-  const findedCol = appData.findCollectionById(collection)
-  const findedProds = findedCol?.getProducts()
-  return findedCol ? (
+  // const findedCol = appData.findCollectionById(collection)
+  const findedProds = DataStore.findCollectionProducts(collection)
+  console.log(findedProds)
+  return true ? (
     <main className={styles.collection}>
       <div className={styles.title}>
-        <h1>{findedCol.title}</h1>
+        <h1>sss</h1>
       </div>
       <div className={styles.products}>
         <Filter count={findedProds.length} />
@@ -24,7 +29,7 @@ const Collection = () => {
               <Product
                 key={item.id}
                 id={item.id}
-                title={item.title}
+                title={item.name}
                 price={item.price}
                 image={item.image}
               />
@@ -36,6 +41,6 @@ const Collection = () => {
   ) : (
     <PageNotFound />
   )
-}
+})
 
 export default Collection

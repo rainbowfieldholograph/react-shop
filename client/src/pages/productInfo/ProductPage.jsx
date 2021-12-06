@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import AppContext from '../../context/appContext'
 import CartContext from '../../context/cartContext'
 import PageNotFound from '../pageNotFound/PageNotFound'
-import styles from './ProductInfo.module.css'
+import styles from './ProductPage.module.css'
 
 const ProductInfo = () => {
   const appData = useContext(AppContext)

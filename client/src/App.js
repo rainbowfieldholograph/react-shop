@@ -1,8 +1,9 @@
 import './globalStyles.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Router from './router/Router'
 import AppContext from './context/appContext'
 import CartContext from './context/cartContext'
+import axios from 'axios'
 
 const appData = {
   collections: [
@@ -85,9 +86,33 @@ const appData = {
 }
 
 function App() {
+  const [loading, setLoading] = useState(false)
+
   const [cartItems, setCartItems] = useState(
     sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : []
   )
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true)
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}api/product`)
+      console.log(response)
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const fetchCollections = async () => {
+    try {
+      setLoading(true)
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}api/collection`)
+      setLoading(false)
+      return response.data
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const addNewCartItem = (parentId, sizeId) => {
     const newItemId = Date.now() * (Math.random() + 1)
@@ -129,9 +154,14 @@ function App() {
   const getCartItemsCount = () => cartItems.length
 
   return (
-    <AppContext.Provider value={appData}>
+    <AppContext.Provider value={{ appData, fetchCollections, loading }}>
       <CartContext.Provider
-        value={{ addNewCartItem, findCartItems, removeCartItem, getCartItemsCount }}
+        value={{
+          addNewCartItem,
+          findCartItems,
+          removeCartItem,
+          getCartItemsCount,
+        }}
       >
         <Router />
       </CartContext.Provider>

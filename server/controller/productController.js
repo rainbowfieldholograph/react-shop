@@ -2,21 +2,38 @@ const ApiError = require('../error/ApiError')
 const { Product } = require('../models/models')
 
 class ProductController {
-  async create(req, res) {
-    const { name, price, image, descr, benefits } = req.body
-    const product = await Product.create({ name, price, image, descr, benefits })
-    return res.json(product)
+  async create(req, res, next) {
+    try {
+      const { name, price, image, descr, benefits, sizes, collectionId } = req.body
+      const product = await Product.create({
+        name,
+        price,
+        image,
+        descr,
+        benefits,
+        sizes,
+        collectionId,
+      })
+      return res.json(product)
+    } catch (error) {
+      next(ApiError.badRequest(error.message))
+    }
   }
   async getAll(req, res) {
-    const products = await Product.findAll()
+    const { collectionId } = req.query
+    let products
+    if (!collectionId) {
+      products = await Product.findAll()
+    } else if (collectionId) {
+      products = await Product.findAll({ where: { collectionId } })
+    }
     return res.json(products)
   }
-  async getOne(req, res, next) {
-    const { id } = req.query
-    if (!id) {
-      return next(ApiError.badRequest('no id!'))
-    }
-    res.json(id)
+  async getOne(req, res) {
+    const { id } = req.params
+    console.log('ID!!!!!!!!:', id)
+    const product = await Product.findOne({ where: { id } })
+    return res.json(product)
   }
 }
 

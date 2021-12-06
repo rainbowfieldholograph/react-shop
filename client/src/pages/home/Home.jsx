@@ -1,20 +1,26 @@
-import { useContext } from 'react'
+import { useEffect } from 'react'
 import styles from './Home.module.css'
 import CollectionCard from '../../components/collectionCard/CollectionCard'
-import AppContext from '../../context/appContext'
+import { observer } from 'mobx-react-lite'
+import DataStore from '../../mobx/DataStore'
 
-const Home = () => {
-  const appData = useContext(AppContext)
+const Home = observer(() => {
+  useEffect(() => {
+    DataStore.fetchCollections()
+  }, [])
+
+  if (DataStore.loading) return <div>Loading...</div>
+
   return (
     <main className={styles.home}>
       <div className="container">
         <ul className={styles.bigItems}>
-          {appData.collections.map((col, index) => {
+          {DataStore.collections.map((col, index) => {
             return (
               index < 2 && (
                 <li key={col.id}>
                   <CollectionCard
-                    title={col.title}
+                    title={col.name}
                     linkTo={`collections/${col.id}`}
                     image={col.image}
                   />
@@ -26,6 +32,6 @@ const Home = () => {
       </div>
     </main>
   )
-}
+})
 
 export default Home
