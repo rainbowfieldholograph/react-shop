@@ -2,6 +2,7 @@ import { useContext, useRef } from 'react'
 import { useParams } from 'react-router'
 import AppContext from '../../context/appContext'
 import CartContext from '../../context/cartContext'
+import DataStore from '../../mobx/DataStore'
 import PageNotFound from '../pageNotFound/PageNotFound'
 import styles from './ProductPage.module.css'
 
@@ -9,6 +10,7 @@ const ProductInfo = () => {
   const appData = useContext(AppContext)
   const { addNewCartItem } = useContext(CartContext)
   const { product, collection } = useParams()
+  DataStore
   const findedProduct = appData.findCollectionById(collection)?.getProductById(product)
   const sizeRef = useRef()
   return findedProduct ? (
