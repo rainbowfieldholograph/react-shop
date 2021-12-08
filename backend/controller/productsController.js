@@ -1,7 +1,7 @@
 const ApiError = require('../error/ApiError')
 const { Product } = require('../models/models')
 
-class ProductController {
+class ProductsController {
   async create(req, res, next) {
     try {
       const { name, price, image, descr, benefits, sizes, collectionId } = req.body
@@ -37,4 +37,4 @@ class ProductController {
   }
 }
 
-module.exports = new ProductController()
+module.exports = new ProductsController()
