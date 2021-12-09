@@ -16,7 +16,7 @@ class CollectionsController {
 
   async getOne(req, res) {
     const { id } = req.params
-    const collection = await Collection.findOne({ where: { id } })
+    const collection = await Collection.findOne({ where: { id }, include: [Product] })
     return res.json(collection)
   }
 }
