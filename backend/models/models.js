@@ -18,10 +18,11 @@ const Product = sequelize.define('product', {
   collectionId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: { model: Collection, key: 'id' },
+    // references: { model: Collection, key: 'id' },
   },
 })
 
+Product.belongsTo(Collection)
 Collection.hasMany(Product, { foreignKey: 'collectionId' })
 
 module.exports = {

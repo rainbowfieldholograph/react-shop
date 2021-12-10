@@ -1,6 +1,5 @@
 const { Collection } = require('../models/models')
 const { Product } = require('../models/models')
-const ApiError = require('../error/ApiError')
 
 class CollectionsController {
   async create(req, res) {
@@ -10,7 +9,9 @@ class CollectionsController {
   }
 
   async getAll(req, res) {
-    const collections = await Collection.findAll({ include: [Product] })
+    const collections = await Collection.findAll({
+      include: [Product],
+    })
     return res.json(collections)
   }
 
