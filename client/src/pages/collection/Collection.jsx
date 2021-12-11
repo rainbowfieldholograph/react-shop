@@ -8,15 +8,17 @@ import DataStore from '../../mobx/DataStore'
 import { observer } from 'mobx-react-lite'
 
 const Collection = observer(() => {
-  useEffect(() => {
-    DataStore.fetchProducts()
-  }, [])
+  // useEffect(() => {
+  //   DataStore.fetchProducts()
+  // }, [])
 
   const { collection } = useParams() //get collection url
-  // const findedCol = appData.findCollectionById(collection)
-  const findedProds = DataStore.findCollectionProducts(collection)
-  console.log(findedProds)
-  return true ? (
+  const findedProds = DataStore.getOneCollection(collection)
+  console.log(Boolean(findedProds))
+
+  if (!findedProds) return <div>Loading...</div>
+
+  return findedProds ? (
     <main className={styles.collection}>
       <div className={styles.title}>
         <h1>sss</h1>

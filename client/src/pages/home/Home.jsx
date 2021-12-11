@@ -20,7 +20,7 @@ const Home = observer(() => {
               index < 2 && (
                 <li key={col.id}>
                   <CollectionCard
-                    title={col.name}
+                    title={col.title}
                     linkTo={`collections/${col.id}`}
                     image={col.image}
                   />

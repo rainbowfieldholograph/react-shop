@@ -5,7 +5,7 @@ class Api {
 
   async getAllProducts() {
     try {
-      return await axios.get(`${this.url}api/product`)
+      return await axios.get(`${this.url}api/products`)
     } catch (error) {
       console.log(error)
     }
@@ -13,7 +13,15 @@ class Api {
 
   async getAllCollections() {
     try {
-      return await axios.get(`${this.url}api/collection`)
+      return await axios.get(`${this.url}api/collections`)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async getOneCollectionById(id) {
+    try {
+      return await axios.get(`${this.url}api/collections/${id}`)
     } catch (error) {
       console.log(error)
     }

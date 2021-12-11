@@ -1,18 +1,21 @@
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useEffect } from 'react'
 import { useParams } from 'react-router'
-import AppContext from '../../context/appContext'
 import CartContext from '../../context/cartContext'
 import DataStore from '../../mobx/DataStore'
 import PageNotFound from '../pageNotFound/PageNotFound'
 import styles from './ProductPage.module.css'
 
 const ProductInfo = () => {
-  const appData = useContext(AppContext)
+  useEffect(() => {
+    DataStore.fetchCollections()
+  }, [])
+
   const { addNewCartItem } = useContext(CartContext)
   const { product, collection } = useParams()
-  DataStore
-  const findedProduct = appData.findCollectionById(collection)?.getProductById(product)
+  const findedProduct = DataStore.getOneCollection(collection).products[product]
+  console.log(DataStore.getOneCollection(collection))
   const sizeRef = useRef()
+  if (DataStore.loading) return <div>Loading...</div>
   return findedProduct ? (
     <div className="container">
       <div className={styles.wrapper}>
