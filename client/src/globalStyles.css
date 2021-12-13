@@ -121,7 +121,7 @@ a {
   transform: scaleX(1);
 }
 
-/* @supports selecto(: focus-visible) {
+/* @supports selector(: focus-visible) {
   .customLink:focus::before {
     transform: scaleX(0);
   }

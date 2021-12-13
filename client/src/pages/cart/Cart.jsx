@@ -24,6 +24,8 @@ const Cart = () => {
             <ul className={styles.items}>
               {cartData.map((prod) => (
                 <CartItem
+                  cartData={cartData}
+                  setCartData={setCartData}
                   key={prod.id}
                   id={prod.id}
                   title={prod.title}
