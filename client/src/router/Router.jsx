@@ -18,9 +18,9 @@ const Router = () => {
           <Route path="collections" element={<Collections />} />
           <Route path="collections/:collection" element={<Collection />} />
           <Route path="collections/:collection/:product" element={<ProductPage />} />
-          {/* <Route path="return-policy" element={<ReturnPolicy />} />
+          <Route path="return-policy" element={<ReturnPolicy />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="cart" element={<Cart />} /> */}
+          <Route path="cart" element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>

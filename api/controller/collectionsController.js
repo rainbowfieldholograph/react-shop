@@ -24,7 +24,10 @@ class CollectionsController {
   async getOne(req, res) {
     try {
       const { id } = req.params
-      const collection = await prismaClient.collection.findUnique({ where: { id: Number(id) } })
+      const collection = await prismaClient.collection.findUnique({
+        where: { id: Number(id) },
+        include: { products: true },
+      })
       return res.json(collection)
     } catch (error) {
       console.log(error)

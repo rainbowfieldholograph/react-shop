@@ -1,35 +1,35 @@
-import { useContext, useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import CartContext from '../../context/cartContext'
-import DataStore from '../../mobx/DataStore'
+import api from '../../api/api'
+import CartStore from '../../mobx/CartStore'
 import PageNotFound from '../pageNotFound/PageNotFound'
 import styles from './ProductPage.module.css'
 
-const ProductInfo = () => {
-  useEffect(() => {
-    DataStore.fetchCollections()
-  }, [])
-
-  const { addNewCartItem } = useContext(CartContext)
-  const { product, collection } = useParams()
-  const findedProduct = DataStore.getOneCollection(collection).products[product]
-  console.log(DataStore.getOneCollection(collection))
+const ProductPage = () => {
+  const [prodData, setProdData] = useState()
   const sizeRef = useRef()
-  if (DataStore.loading) return <div>Loading...</div>
-  return findedProduct ? (
+  const { product } = useParams()
+
+  useEffect(() => {
+    api.getOneProduct(product).then(({ data }) => setProdData(data))
+  }, [product])
+
+  if (!prodData) return <div>Loading...</div>
+
+  return prodData ? (
     <div className="container">
       <div className={styles.wrapper}>
         <div className={styles.imgWrapper}>
-          <img width="100%" src={findedProduct.image} alt="product" />
+          <img width="100%" src={prodData.image} alt="product" />
         </div>
         <div className={styles.info}>
-          <h1 className={styles.title}>{findedProduct.title}</h1>
-          <h2 className={styles.price}>{findedProduct.price}</h2>
-          {findedProduct.sizes && (
+          <h1 className={styles.title}>{prodData.title}</h1>
+          <h2 className={styles.price}>{prodData.price}</h2>
+          {prodData.sizes && (
             <div className={styles.sizeWrapper}>
               <p className={styles.sizeTitle}>Size</p>
               <select ref={sizeRef} className={styles.sizeSelect} id="size">
-                {findedProduct.sizes.map((size, index) => (
+                {prodData.sizes.map((size, index) => (
                   <option key={index} value={index}>
                     {size}
                   </option>
@@ -38,17 +38,17 @@ const ProductInfo = () => {
             </div>
           )}
           <button
-            onClick={() => addNewCartItem(findedProduct.id, sizeRef.current.value)}
+            onClick={() => CartStore.addNewCartItem(prodData.id, sizeRef.current.value)}
             className={styles.addBtn}
           >
             <p>Add to cart</p>
           </button>
           <div className={styles.descr}>
-            <p>{findedProduct.descr}</p>
+            <p>{prodData.descr}</p>
           </div>
-          {findedProduct.benefits && (
+          {prodData.benefits && (
             <ul className={styles.benefits}>
-              {findedProduct.benefits.map((benefit, index) => (
+              {prodData.benefits.map((benefit, index) => (
                 <li key={index}>{benefit}</li>
               ))}
             </ul>
@@ -61,4 +61,4 @@ const ProductInfo = () => {
   )
 }
 
-export default ProductInfo
+export default ProductPage

@@ -13,21 +13,11 @@ class DataStore {
   async fetchProducts() {
     const response = await api.getAllProducts()
     this.products = response.data
-
-    console.log(response)
   }
 
   async fetchCollections() {
     const response = await api.getAllCollections()
     this.collections = response.data
-
-    console.log(response)
-  }
-
-  async getOneCollection(id) {
-    const response = await api.getOneCollectionById(id)
-
-    return response
   }
 
   setLoading(value) {

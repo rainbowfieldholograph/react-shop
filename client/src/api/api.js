@@ -2,10 +2,10 @@ import axios from 'axios'
 
 class Api {
   url = process.env.REACT_APP_API_URL
-
   async getAllProducts() {
     try {
-      return await axios.get(`${this.url}api/products`)
+      const response = await axios.get(`${this.url}api/products`)
+      return response
     } catch (error) {
       console.log(error)
     }
@@ -13,15 +13,26 @@ class Api {
 
   async getAllCollections() {
     try {
-      return await axios.get(`${this.url}api/collections`)
+      const response = await axios.get(`${this.url}api/collections`)
+      return response
     } catch (error) {
       console.log(error)
     }
   }
 
-  async getOneCollectionById(id) {
+  async getOneCollection(id) {
     try {
-      return await axios.get(`${this.url}api/collections/${id}`)
+      const response = await axios.get(`${this.url}api/collections/${id}`)
+      return response
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async getOneProduct(id) {
+    try {
+      const response = await axios.get(`${this.url}api/products/${id}`)
+      return response
     } catch (error) {
       console.log(error)
     }

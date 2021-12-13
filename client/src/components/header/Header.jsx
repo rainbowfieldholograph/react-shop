@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
 import searchIcon from '../../images/svg/search.svg'
 import cartIcon from '../../images/svg/cart.svg'
-import { useContext } from 'react'
-import CartContext from '../../context/cartContext'
+import CartStore from '../../mobx/CartStore'
+import { observer } from 'mobx-react-lite'
 
-const Header = () => {
-  const { getCartItemsCount } = useContext(CartContext)
+const Header = observer(() => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -34,13 +33,13 @@ const Header = () => {
             </button>
             <Link to="cart" className={styles.btn}>
               <img width="18px" height="auto" src={cartIcon} alt="search" />
-              <p>{getCartItemsCount()}</p>
+              <p>{CartStore.getCartItemsCount()}</p>
             </Link>
           </div>
         </nav>
       </div>
     </header>
   )
-}
+})
 
 export default Header
