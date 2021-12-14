@@ -3,13 +3,14 @@ import styles from './Home.module.css'
 import CollectionCard from '../../components/collectionCard/CollectionCard'
 import { observer } from 'mobx-react-lite'
 import DataStore from '../../mobx/DataStore'
+import Loading from '../../components/loading/Loading'
 
 const Home = observer(() => {
   useEffect(() => {
     DataStore.fetchCollections()
   }, [])
 
-  if (DataStore.loading) return <div>Loading...</div>
+  if (DataStore.loading) return <Loading />
 
   return (
     <main className={styles.home}>

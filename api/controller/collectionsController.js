@@ -25,7 +25,7 @@ class CollectionsController {
     try {
       const { id } = req.params
       const collection = await prismaClient.collection.findUnique({
-        where: { id: Number(id) },
+        where: { id: +id },
         include: { products: true },
       })
       return res.json(collection)

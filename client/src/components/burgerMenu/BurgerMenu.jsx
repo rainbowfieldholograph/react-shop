@@ -4,13 +4,14 @@ import searchIcon from '../../images/svg/search.svg'
 import cartIcon from '../../images/svg/cart.svg'
 import CartStore from '../../mobx/CartStore'
 import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
 
-const BurgerMenu = () => {
+const BurgerMenu = observer(() => {
   return (
     <div className={styles.wrapper}>
       <input className={styles.burgerCheck} id="burger-check" type="checkbox" />
-      <label for="burger-check" className={styles.burger}></label>
-      <nav id="navigation1" className={styles.navigation}>
+      <label htmlFor="burger-check" className={styles.burger}></label>
+      <div id="navigation1" className={styles.navigation}>
         <ul className={styles.links}>
           <li>
             <a className="customLink" href="#">
@@ -37,23 +38,9 @@ const BurgerMenu = () => {
             <p>{CartStore.getCartItemsCount()}</p>
           </Link>
         </div>
-        {/* <ul>
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Stuffs</a>
-          </li>
-          <li>
-            <a href="#">Other stuffs</a>
-          </li>
-          <li>
-            <a href="#">Cats</a>
-          </li>
-        </ul> */}
-      </nav>
+      </div>
     </div>
   )
-}
+})
 
 export default BurgerMenu

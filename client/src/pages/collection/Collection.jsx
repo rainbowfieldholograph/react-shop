@@ -7,6 +7,7 @@ import Filter from '../../components/filter/Filter'
 // import DataStore from '../../mobx/DataStore'
 import { observer } from 'mobx-react-lite'
 import api from '../../api/api'
+import Loading from '../../components/loading/Loading'
 
 const Collection = observer(() => {
   const { collection } = useParams()
@@ -16,7 +17,7 @@ const Collection = observer(() => {
     api.getOneCollection(collection).then(({ data }) => setColData(data))
   }, [collection])
 
-  if (!colData) return <div>Loading...</div>
+  if (!colData) return <Loading />
 
   return colData ? (
     <main className={styles.collection}>

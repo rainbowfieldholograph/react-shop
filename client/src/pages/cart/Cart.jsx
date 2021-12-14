@@ -3,6 +3,7 @@ import styles from './Cart.module.css'
 import CartItem from '../../components/cartItem/CartItem'
 import CartStore from '../../mobx/CartStore'
 import { useEffect, useState } from 'react'
+import Loading from '../../components/loading/Loading'
 
 const Cart = () => {
   const navigate = useNavigate()
@@ -12,13 +13,11 @@ const Cart = () => {
     CartStore.findCartItems().then((data) => setCartData(data))
   }, [])
 
-  console.log(cartData)
-
   return cartData ? (
     <div className="container">
       <div className={styles.cart}>
         <h1>Your cart</h1>
-        {cartData.length > 0 ? (
+        {CartStore.getCartItemsCount() > 0 ? (
           <>
             <h2>Products: {cartData.length}</h2>
             <ul className={styles.items}>
@@ -45,7 +44,7 @@ const Cart = () => {
       </div>
     </div>
   ) : (
-    <div>Load</div>
+    <Loading />
   )
 }
 

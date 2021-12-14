@@ -1,8 +1,6 @@
 import './globalStyles.css'
 import Router from './router/Router'
 
-function App() {
-  return <Router />
-}
+const App = () => <Router />
 
 export default App

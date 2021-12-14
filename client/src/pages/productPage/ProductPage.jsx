@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import api from '../../api/api'
+import Loading from '../../components/loading/Loading'
 import CartStore from '../../mobx/CartStore'
 import PageNotFound from '../pageNotFound/PageNotFound'
 import styles from './ProductPage.module.css'
@@ -8,15 +9,15 @@ import styles from './ProductPage.module.css'
 const ProductPage = () => {
   const [prodData, setProdData] = useState()
   const sizeRef = useRef()
-  const { product } = useParams()
+  const { product, collection } = useParams()
 
   useEffect(() => {
     api.getOneProduct(product).then(({ data }) => setProdData(data))
   }, [product])
 
-  if (!prodData) return <div>Loading...</div>
+  if (!prodData) return <Loading />
 
-  return prodData ? (
+  return prodData && +collection === prodData.collectionId ? (
     <div className="container">
       <div className={styles.wrapper}>
         <div className={styles.imgWrapper}>
