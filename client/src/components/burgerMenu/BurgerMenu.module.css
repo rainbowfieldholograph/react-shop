@@ -1,0 +1,132 @@
+.wrapper {
+  width: 100%;
+}
+
+.links {
+  display: flex;
+  gap: 1.5em;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.burger {
+  display: inline-block;
+  border: 0;
+  background: none;
+  outline: 0;
+  padding: 0;
+  cursor: pointer;
+  border-bottom: 4px solid currentColor;
+  width: 28px;
+  transition: border-bottom 1s ease-in-out;
+  -webkit-transition: border-bottom 1s ease-in-out;
+}
+
+.burger::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.burger:before {
+  content: '';
+  display: block;
+  border-bottom: 4px solid currentColor;
+  width: 100%;
+  margin-bottom: 5px;
+  transition: transform 0.5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+}
+.burger:after {
+  content: '';
+  display: block;
+  border-bottom: 4px solid currentColor;
+  width: 100%;
+  margin-bottom: 5px;
+  transition: transform 0.5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+}
+
+.burgerCheck {
+  display: none;
+}
+
+.burgerCheck:checked ~ .burger {
+  border-bottom: 4px solid transparent;
+  transition: border-bottom 0.8s ease-in-out;
+  -webkit-transition: border-bottom 0.8s ease-in-out;
+}
+.burgerCheck:checked ~ .burger:before {
+  transform: rotate(-405deg) translateY(1px) translateX(-3px);
+  -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
+  transition: transform 0.5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+}
+.burgerCheck:checked ~ .burger:after {
+  transform: rotate(405deg) translateY(-4px) translateX(-5px);
+  -webkit-transform: rotate(405deg) translateY(-4px) translateX(-5px);
+  transition: transform 0.5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+}
+
+.burgerCheck:checked ~ .navigation {
+  max-height: 500px;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.navigation {
+  display: flex;
+}
+
+.navigation ul {
+  text-align: right;
+}
+
+@media (max-width: 750px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .navigation {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 0.5em;
+  }
+  .links {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .btns {
+    gap: 0;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 750px) {
+  .navigation {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .burger {
+    display: none;
+  }
+  .links {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

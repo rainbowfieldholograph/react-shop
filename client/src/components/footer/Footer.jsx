@@ -15,7 +15,7 @@ const Footer = () => {
       <div className={styles.contentWrapper}>
         <div className="container">
           <div className={styles.contentInner}>
-            <div className="">ASDASDASDASDASD</div>
+            <div className="">Lorem, ipsum dolor.</div>
             <div className={styles.social}>
               <a
                 target="_blank"
