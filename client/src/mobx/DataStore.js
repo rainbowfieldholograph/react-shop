@@ -4,24 +4,27 @@ import api from '../api/api'
 class DataStore {
   products = []
   collections = []
-  loading = false
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {}, { autoBind: true })
+  }
+
+  setProducts(newProducts) {
+    this.products = newProducts
+  }
+
+  setCollections(newCollections) {
+    this.collections = newCollections
   }
 
   async fetchProducts() {
-    const response = await api.getAllProducts()
-    this.products = response.data
+    const { data } = await api.getAllProducts()
+    this.setProducts(data)
   }
 
   async fetchCollections() {
-    const response = await api.getAllCollections()
-    this.collections = response.data
-  }
-
-  setLoading(value) {
-    this.loading = value
+    const { data } = await api.getAllCollections()
+    this.setCollections(data)
   }
 }
 
