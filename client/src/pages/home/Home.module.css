@@ -2,9 +2,16 @@
   margin-bottom: 6rem;
 }
 
-.bigItems {
+/* .bigItems {
   display: flex;
   gap: 1.5rem;
   width: 100%;
+  justify-content: center;
+} */
+
+.bigItems {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
 }
