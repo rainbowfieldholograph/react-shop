@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useParams } from 'react-router'
 import api from '../../api/api'
 import Loading from '../../components/loading/Loading'

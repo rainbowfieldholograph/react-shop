@@ -8,10 +8,8 @@
 }
 
 .items {
-  display: flex;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 500px));
   justify-content: center;
-  gap: 1.5rem;
-}
-
-.card {
 }

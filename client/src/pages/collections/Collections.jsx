@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import styles from './Collections.module.css'
 import CollectionCard from '../../components/collectionCard/CollectionCard'
 import DataStore from '../../mobx/DataStore'
@@ -20,7 +19,7 @@ const Collections = observer(() => {
         <h1 className={styles.title}>Collections</h1>
         <ul className={styles.items}>
           {collections.map((collection) => (
-            <li key={collection.id} className={styles.card}>
+            <li key={collection.id}>
               <CollectionCard
                 title={collection.title}
                 linkTo={`${collection.id}`}
