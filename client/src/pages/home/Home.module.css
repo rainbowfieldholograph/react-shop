@@ -2,13 +2,6 @@
   margin-bottom: 6rem;
 }
 
-/* .bigItems {
-  display: flex;
-  gap: 1.5rem;
-  width: 100%;
-  justify-content: center;
-} */
-
 .bigItems {
   display: grid;
   gap: 20px;

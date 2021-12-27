@@ -7,3 +7,15 @@ React-Shop
 Используется React-Router 6 версии
 
 Пока что нет полноценной поддержки мобильных версий layout'a.
+
+Stack:
+Frontend:
+-React
+-Create react app
+-MobX
+-React-router 6
+
+Backend:
+-Nodejs
+-Express
+-Prisma (postgresql)
