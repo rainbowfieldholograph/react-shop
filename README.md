@@ -8,6 +8,8 @@ React-Shop
 
 Пока что нет полноценной поддержки мобильных версий layout'a.
 
+Для хранения продуктов в крозине используется session storage.
+
 Stack:
 Frontend:
 -React
