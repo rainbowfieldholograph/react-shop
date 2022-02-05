@@ -18,13 +18,21 @@ class DataStore {
   }
 
   async fetchProducts() {
-    const { data } = await api.getAllProducts()
-    this.setProducts(data)
+    try {
+      const { data } = await api.getAllProducts()
+      this.setProducts(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   async fetchCollections() {
-    const { data } = await api.getAllCollections()
-    this.setCollections(data)
+    try {
+      const { data } = await api.getAllCollections()
+      this.setCollections(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 

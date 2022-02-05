@@ -1,4 +1,4 @@
-React-Shop
+# React-Shop
 
 Как понятно из названия, данный репозиторий содержит в себе попытку реализации fullstack интернет магазина. Делалось for practice.
 
@@ -10,14 +10,8 @@ React-Shop
 
 Для хранения продуктов в корзине используется session storage.
 
-Stack:
-Frontend:
--React
--Create react app
--MobX
--React-router 6
+Stack: Frontend: -React -Create react app -MobX -React-router 6
 
-Backend:
--Nodejs
--Express
--Prisma (postgresql)
+Backend: -Nodejs -Express -Prisma (postgresql)
+
+backend находится в отдельной ветке.
